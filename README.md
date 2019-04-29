@@ -29,14 +29,17 @@ The structure of this repository is based off of Claire Duvallet's Aerodigestion
 ```
 
 ### Scripts to Reproduce
-The scripts and notebooks can be run in any order as they are all self-contained. To rerun MAGIC imputation and filtering of the data, the magic_imputation.ipynb notebook in the src/processing_and_imputation folder can be run. This notebook will preprocess the data according to the preprocessing steps outlined below in Methods and then perform MAGIC on the samples as outlined below in the imputation sections of the methods. The output to this notebook will appear in data/filtered_data for the preprocessing steps and data/imputation_intermediate/magic_all_samples for the MAGIC steps, although these folders are already pre-populated for convenience, as the code takes a while to run.
+The scripts and notebooks can be run in any order as they are all self-contained. 
 
-To rerun scImpute and SAVER imputation of the filtered data, the imputation_scimpute_saver.R script in the src/processing_and_imputation folder can be run. This script will perform scImpute and SAVER on the samples as outlined below in the imputation sections of the methods. The output to this notebook will appear in data/imputation_intermediate/different_imputations for the final results of the scImpute and SAVER steps and data/imputation_intermediate/different_imputations/scimpute_intermediates for the intermediate scImpute steps, although these folders are already pre-populated for convenience, as the code takes a while to run.
+### Reproducing Processing and Imputation
+To rerun MAGIC imputation and filtering of the data, the magic_imputation.ipynb notebook in the src/processing_and_imputation folder can be run. This notebook will preprocess the data according to the preprocessing steps outlined below in Methods and then perform MAGIC on the samples as outlined below in the imputation sections of the methods. The output to this notebook will appear in data/filtered_data for the preprocessing steps and data/imputation_intermediate/magic_all_samples for the MAGIC steps, although these folders are already pre-populated for convenience, as the code takes a while to run.
 
-To regenerate Supplementary Figure 1 to visualize comparisons of the imputation methods, 
+To rerun scImpute and SAVER imputation of the filtered data, the imputation_scimpute_saver.R script in the src/processing_and_imputation folder can be run. This script will perform scImpute and SAVER on the samples as outlined below in the imputation sections of the methods. The output to this notebook will appear in data/imputation_intermediate/different_imputations for the final results of the scImpute and SAVER steps and data/imputation_intermediate/different_imputations/scimpute_intermediates for the intermediate scImpute steps, although these folders are already pre-populated for convenience.
 
+#### Reproducing Figures
+To regenerate Supplementary Figure 1 to visualize comparisons of the imputation methods, the supp_figure_1_imputation_comparison.ipynb in the src/figure_making folder can be run. This script will run PCA and t-SNEs on all three imputation methods and the raw filtered data to visualize the effects of different imputations. The output to this notebook will appear in the src/output/figures folder, although this folder is prepopulated for convenience.
 
-
+To regenerate Supplementary Figure 2 to visualize biomarkers on the MAGIC-imputed data, the supp_figure_2_magic_biomarkers.ipynb in the src/figure_making folder can be run. This script will run a t-SNE on a representative sample imputed by MAGIC and superimpose the t-SNE plots with 9 biomarkers identified in Farhadian 2018. The output to this notebook will appear in the src/output/figures folder, although this folder is prepopulated for convenience.
 
 ## Information about the Code
 ### Data Sources
