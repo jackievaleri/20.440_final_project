@@ -41,6 +41,27 @@ To regenerate Supplementary Figure 1 to visualize comparisons of the imputation 
 
 To regenerate Supplementary Figure 2 to visualize biomarkers on the MAGIC-imputed data, the `supp_figure_2_magic_biomarkers.ipynb` in the `src/figure_making` folder can be run. This script will run a t-SNE on a representative sample imputed by MAGIC and superimpose the t-SNE plots with 9 biomarkers identified in Farhadian 2018. The output to this notebook will appear in the `src/output/figures` folder, although this folder is prepopulated for convenience.
 
+### Installation Requirements
+You will need Python v.3.7.1, although some packages may have backwards compatibility. Python analyses require the following packages: magic v.1.5.3, scprep v.0.11.1, matplotlib v.3.0.3, numpy v.1.15.4, pandas v.0.23.4, csv v.1.0, and sklearn v.0.20.1.
+
+You will also need R v.3.5.1, although again some packages may have backwards compatibility. R analyses require the following packages: scImpute v.0.0.9, SAVER v.1.1.1, doSNOW v.1.0.16, and doParallel v.1.0.14. In the R script, the installation lines are commented out but can easily be added depending on the packages your machine already has installed.
+
+# import statements
+import magic
+import scprep
+
+import numpy as np
+import pandas as pd
+import matplotlib
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+import gzip
+import csv
+
+from sklearn.manifold import TSNE
+from scprep.io.csv import load_csv
+
 ## Information about the Code
 ### Data Sources
 To understand the characteristic gene expression features of HIV+ and HIV- patients, single cell RNA sequencing (scRNA-seq) data of blood and cerebrospinal fluid (CSF) cells were obtained using SeqWell methodology<sup>1</sup>.  Datasets from [Farhadian, et. al](https://insight.jci.org/articles/view/121718). included CSF scRNA-seq data from 3 HIV+ and 2 HIV- patients; for 2 of the HIV+ patients, matched blood scRNA-seq data was included. The patients were males between the ages of 33 and 59, with varied histories of substance use, alcohol use, and smoking, matched between the patient and control populations. This data is also available on GEO associated with the ID [GEO177397](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE117397).
