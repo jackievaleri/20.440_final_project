@@ -8,20 +8,24 @@ Human immunodeficiency virus (HIV)-associated neurological disorders (HAND) such
 ### Directory Structure
 The structure of this repository is based off of Claire Duvallet's Aerodigestion Aspiration Analysis public [repository](https://github.com/cduvallet/aspiration-analysis-public/blob/master/README.md). 
 
-```
-|-- Makefile   
+``` 
 |-- README.md
 |
 |-- data
 |    |-- raw_data: raw data from GEO, Farhadian 2018
-|    |-- imputation_intermediate: intermediate preprocessed files corresponding to raw data and imputed files from SAVER,     |          scImpute, and MAGIC
+|    |-- imputation_intermediate
+|    |    |-- different_imputations 
+|    |    |     |-- SAVER and scImpute final files 
+|    |    |     |-- scimpute_intermediates: intermediate files created running scImpute
+|    |    |-- magic_all_samples: files after MAGIC imputation was run on them
+|    |-- filtered_data: data for all samples after preprocessing completed
 |
 |-- output
-|    |-- supp_files: supplementary files
-|    |
 |    |-- figures: png files used to assemble final figures
 |    
-|-- src:jupyter notebooks to create supplementary figures 1 and 2
+|-- src
+|    |-- processing_and_imputation: notebooks and scripts required to process and impute the files
+|    |-- figure_making: jupyter notebooks to create supplementary figures 1 and 2
 ```
 
 ## Information about the Code
@@ -32,7 +36,6 @@ To understand the characteristic gene expression features of HIV+ and HIV- patie
 #### Imputation with SAVER, scImpute, and MAGIC
 To decrease the sparsity of the gene expression matrix prior to downstream analyses, several imputation-based techniques have been published that uncover likely values for dropout genes. Three methods, SAVER<sup>2</sup>, scImpute<sup>3</sup>, and MAGIC<sup>3</sup>, were compared. MAGIC was used with the default settings, using the built-in MAGIC principal component analysis (PCA) and t-distributed stochastic neighborhood embedding (t-SNE) functions to visualize the results, again with the default settings (decay = 15, k nearest neighbors = 5, distance = Euclidean, number of principal components = 100, time step t = 10). scImpute was used with an estimation of 20 clusters, as Farhadian 2018 identified 14 clusters but with some clusters rather large and heterogeneous, we felt it might be too restrictive to use only 14. 20 was chosen because this would ensure that we at least capture the original clusters as well as possibly split the one mixed population and the four large T cell clusters. All other default settings were utilized (labeled cells = False, dropout threshold = 0.5). SAVER was run with the default settings and the computation was parallelized with the doParallel function on six cores to match the number on the server used. To visualize scImpute, SAVER, and raw results with PCA and t-SNE, the sklearn functions were used with default settings.
 
-#### Cell Clustering with Seurat
 
 
 1. Farhadian, SF, Mehta, SS, Zografou, C. Single-cell RNA sequencing reveals microglia-like cells in cerebrospinal fluid during virologically suppressed HIV. JCI Insight. 2018; 3(18): 121718. doi: 10.1172/jci.insight.121718.
