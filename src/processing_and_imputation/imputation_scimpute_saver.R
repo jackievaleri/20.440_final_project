@@ -16,7 +16,7 @@ scimpute(# full path to raw count matrix
   out_dir = out_path,           # full path to output directory
   labeled = FALSE,          # cell type labels not available
   drop_thre = 0.5,          # threshold set on dropout probability
-  Kcluster = num_clusters,             # 23 cell subpopulations?
+  Kcluster = num_clusters,             # 20 cell subpopulations?
   ncores = 10)              # number of cores used in parallel computation
 
 ## Part 2: Saver
@@ -32,8 +32,9 @@ nCores <- detectCores(logical = FALSE)
 cat(nCores, "cores detected.")
 
 # parallelize the computation
+#install.packages("doParallel") # need to do this if not already installed
 library(doParallel)
-cl <- makeCluster(6) # fill in with your number of cores detected
+cl <- makeCluster(nCores) # fill in with your number of cores detected
 registerDoParallel(cl)
 
 # read in the filtered data
