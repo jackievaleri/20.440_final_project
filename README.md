@@ -1,2 +1,2 @@
-# 20.440_final_project
-This repository is for Problem Set 8 to replicate the figures from the final project.
+### Analysis of T Cell Populations in Blood and Cerebrospinal Fluid during Latent HIV-1 Infection 
+This repository is for Problem Set 8 to replicate the figures, analyses, and scripts accompanying the final paper for 20.440. The content contained in this repository make up the majority of the supplementary figures, as they deal with imputation method comparisons as well as initial data analysis with Seurat.
