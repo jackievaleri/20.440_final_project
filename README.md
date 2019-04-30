@@ -43,6 +43,9 @@ To regenerate Supplementary Figure 2 A and B to visualize comparisons of the imp
 
 To regenerate Supplementary Figure 2 C and D to visualize different compositions of the immune cells before and after MAGIC imputation, the `supp_figure_2CD_imputation_comparison.ipynb` in the `src/figure_making` folder can be run. This script will run Seurat-facilitated cell clustering and composition analysis on a per-sample basis for the non-imputed data and the MAGIC-imputed data to visualize the effects of MAGIC. The output to this notebook will appear in the `src/output/figures` folder, although this folder is prepopulated for convenience.
 
+#### Final Integrated Figures
+Please note that since scripts in both Python and R were used to make parts of Supplementary Figure 2, the stitching of these components were done outside of either Python or R scripts. The final integrated supplementary figure 2 is included in the `src/output/figures` folder.
+
 ### Installation Requirements
 You will need Python v.3.7.1, although some packages may have backwards compatibility. Python analyses require the following packages: magic v.1.5.3, scprep v.0.11.1, matplotlib v.3.0.3, numpy v.1.15.4, pandas v.0.23.4, csv v.1.0, and sklearn v.0.20.1. MAGIC was installed according to the [Krishnaswamy Lab Protocol](https://github.com/KrishnaswamyLab/MAGIC) for installation.
 
