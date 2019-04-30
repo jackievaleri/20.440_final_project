@@ -30,7 +30,7 @@ The structure of this repository is based off of Claire Duvallet's Aerodigestion
 ```
 
 ### Scripts to Reproduce
-The scripts and notebooks can be run in any order as they are all self-contained. However, the Juptyer Notebooks are efficient and will run in under an hour, while the R scripts can take hours to run. We recommend using the final outputs of the R scripts instead of running them yourself.
+The scripts and notebooks can be run in any order as they are all self-contained. However, the figure reproduction scripts in  the `src/figure_making` folder are efficient and will run in under an hour, while the processing and imputation scripts in the `src/processing_and_imputation` folder can take hours to run. We recommend using the already-supplied outputs of the processing and imputation scripts instead of running them yourself.
 
 #### Reproducing Processing and Imputation
 ##### magic_imputation.ipynb
