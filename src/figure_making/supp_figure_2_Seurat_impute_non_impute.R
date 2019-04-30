@@ -1,20 +1,21 @@
 # Part 0: Import Packages
-#devtools::install_github("KrishnaswamyLab/MAGIC", subdir='Rmagic') # download if needed
+#devtools::install_github("KrishnaswamyLab/MAGIC", subdir='Rmagic') # install if needed
 library(Rmagic)
-#BiocManager::install("MAST") # download if needed
+#BiocManager::install("MAST") # download if needed # install if needed
 library(MAST)
 library(Seurat)
 library(dplyr)
-#BiocManager::install("topGO")
+#BiocManager::install("topGO") # install if needed
 library(topGO)
 library(ggplot2)
 library(sctransform)
 library(RColorBrewer)
 library(ggpubr)
 
-
 # Part 1: Load Integrated Non-Imputed Data and Calculate Clusters
 # Load integrated data
+# this may need to be changed based on where data gets downloaded and unzipped- too big for github
+# may need to setwd() if using RStudio
 load('../../../../../../../../Desktop/seurat_integrated_intermediate/integratedData.RData')
 
 # Compute clusters in the non-imputed data
@@ -42,6 +43,7 @@ original_barplot = barplot(original_frame, col = cols, xlim =c(0,11), xaxt = "n"
 original_barplot = legend('right', legend = rownames(original_frame), fill=cols, xpd=TRUE, horiz=FALSE, cex = 1, 
        x.intersp = 0.15, x = 8.5, y = 1)
 original_barplot = axis(side = 1, labels = c('HIV+1,Bld', 'HIV+1,CSF', 'HIV+2,Bld', 'HIV+2,CSF', 'HIV+3,CSF', 'HIV-1,CSF', 'HIV-2,CSF'), at = c(0.8, 2, 3.2, 4.4, 5.6, 6.8, 8))
+original_barplot = title('Non-Imputed Cell Cluster Membership by Sample')
 dev.off()
 
 # Part 2: Do MAGIC on the integrated data object
@@ -68,6 +70,7 @@ imputed_barplot = barplot(imputed_frame, col = cols, xlim =c(0,11), xaxt = "n", 
 imputed_barplot = legend('right', legend = rownames(original_frame), fill=cols, xpd=TRUE, horiz=FALSE, cex = 1, 
        x.intersp = 0.15, x = 8.5, y = 1)
 imputed_barplot = axis(side = 1, labels = c('HIV+1,Bld', 'HIV+1,CSF', 'HIV+2,Bld', 'HIV+2,CSF', 'HIV+3,CSF', 'HIV-1,CSF', 'HIV-2,CSF'), at = c(0.8, 2, 3.2, 4.4, 5.6, 6.8, 8))
+imputed_barplot = title('Imputed Cell Cluster Membership by Sample')
 dev.off()
 
 # Part 3: Output
