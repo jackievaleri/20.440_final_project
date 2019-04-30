@@ -18,7 +18,10 @@ library(ggpubr)
 load('../../../../../../../../Desktop/seurat_integrated_intermediate/integratedData.RData')
 
 # Compute clusters in the non-imputed data
-original_plot = DimPlot(object = immune.combined, reduction = "tsne", split.by = "sample", no.axes=TRUE)
+immune.combined = RenameIdents(object = immune.combined, `0` = "T-Cells 1", `1` = "CD8+ T Cells", 
+                              `2` = "Myeloid 1", `3` = "Myeloid 2" , `5` = "B-Cells", `6` = "NK Cells", 
+                              `7` = "Myeloid 3",`8` = "Plasma Cells",`10`="T-Cells 2")
+original_plot = DimPlot(object = immune.combined, reduction = "tsne", do.return =TRUE, label.size = 10)
 DefaultAssay(object = immune.combined) = "RNA"
 
 # Compute markers for each cluster in the non-imputed data
@@ -27,9 +30,6 @@ all.markers %>% group_by(cluster) %>% top_n(3, avg_logFC)
 bc.cell.type.genes = unique(all.markers$gene) # Takes all the unique cell type specific genes
 
 # Make table of number of cells per cluster by sample
-immune.combined = RenameIdents(object = immune.combined, `0` = "T-Cells 1", `1` = "CD8+ T Cells", 
-                                `2` = "Myeloid 1", `3` = "Myeloid 2" , `5` = "B-Cells", `6` = "NK Cells", 
-                                `7` = "Myeloid 3",`8` = "Plasma Cells",`10`="T-Cells 2")
 original_table = table(Idents(object=immune.combined),immune.combined$sample)
 
 # Figure Making
@@ -57,7 +57,7 @@ magic_cells = RunTSNE(object = magic_cells, reduction = "pca", dims = 1:20)
 # Compute clusters in the MAGIC-imputed Seurat object
 magic_cells = FindNeighbors(object = magic_cells, reduction = "pca", dims = 1:20)
 magic_cells = FindClusters(magic_cells, resolution = 0.2)
-imputed_plot = DimPlot(object = magic_cells, reduction = "tsne",assay="MAGIC_RNA", split.by = "sample", no.axes=TRUE)
+imputed_plot = DimPlot(object = magic_cells, reduction = "tsne",assay="MAGIC_RNA", no.axes=TRUE)
 
 # Make table of number of cells per cluster by sample
 imputed_table = table(Idents(object=magic_cells),magic_cells$sample)
@@ -71,5 +71,7 @@ imputed_barplot = axis(side = 1, labels = c('HIV+1,Bld', 'HIV+1,CSF', 'HIV+2,Bld
 dev.off()
 
 # Part 3: Output
-figure = ggarrange(original_plot, imputed_plot)
+jpeg("../../output/figures/fig_2_integrated_comparison.jpg", width = 1200, height = 600, pointsize = 15, res = 75)
+figure = ggarrange(original_plot, imputed_plot, nrow=1, ncol=2)
 figure
+dev.off()
