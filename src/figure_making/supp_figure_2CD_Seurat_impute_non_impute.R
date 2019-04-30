@@ -72,9 +72,3 @@ imputed_barplot = legend('right', legend = rownames(original_frame), fill=cols, 
 imputed_barplot = axis(side = 1, labels = c('HIV+1,Bld', 'HIV+1,CSF', 'HIV+2,Bld', 'HIV+2,CSF', 'HIV+3,CSF', 'HIV-1,CSF', 'HIV-2,CSF'), at = c(0.8, 2, 3.2, 4.4, 5.6, 6.8, 8))
 imputed_barplot = title('Imputed Cell Cluster Membership by Sample')
 dev.off()
-
-# Part 3: Output
-jpeg("../../output/figures/fig_2_integrated_comparison.jpg", width = 1200, height = 600, pointsize = 15, res = 75)
-figure = ggarrange(original_plot, imputed_plot, nrow=1, ncol=2)
-figure
-dev.off()
