@@ -38,7 +38,7 @@ original_table = table(Idents(object=immune.combined),immune.combined$sample)
 original_frame = as.matrix(original_table)
 original_frame = prop.table(original_frame, 2)
 cols = RColorBrewer::brewer.pal(name = "Paired", n=12)
-jpeg("../../output/figures/fig_2_nonimputed_barplot.jpg", width = 1200, height = 600, pointsize = 15, res = 75)
+jpeg("../../output/figures/supp_fig_2C_nonimputed_barplot.jpg", width = 1200, height = 600, pointsize = 15, res = 75)
 original_barplot = barplot(original_frame, col = cols, xlim =c(0,11), xaxt = "n", ylab = 'Fraction Cells', cex.axis=1.1, cex.lab=1.1)
 original_barplot = legend('right', legend = rownames(original_frame), fill=cols, xpd=TRUE, horiz=FALSE, cex = 1, 
        x.intersp = 0.15, x = 8.5, y = 1)
@@ -65,7 +65,7 @@ imputed_plot = DimPlot(object = magic_cells, reduction = "tsne",assay="MAGIC_RNA
 imputed_table = table(Idents(object=magic_cells),magic_cells$sample)
 imputed_frame = as.matrix(imputed_table)
 imputed_frame = prop.table(imputed_frame, 2)
-jpeg("../../output/figures/fig_2_imputed_barplot.jpg", width = 1200, height = 600, pointsize = 15, res = 75)
+jpeg("../../output/figures/supp_fig_2D_imputed_barplot.jpg", width = 1200, height = 600, pointsize = 15, res = 75)
 imputed_barplot = barplot(imputed_frame, col = cols, xlim =c(0,11), xaxt = "n", ylab = 'Fraction Cells', cex.axis=1.1, cex.lab=1.1)
 imputed_barplot = legend('right', legend = rownames(original_frame), fill=cols, xpd=TRUE, horiz=FALSE, cex = 1, 
        x.intersp = 0.15, x = 8.5, y = 1)
